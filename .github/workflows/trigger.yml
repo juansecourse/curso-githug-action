@@ -45,6 +45,8 @@ jobs:
         uses: actions/setup-node@v4
       - name: install ts-node
         run: npm install
+      - name: Execute TypeScript
+        run: npx ts-node --transpileOnly index.ts
           
       
       
