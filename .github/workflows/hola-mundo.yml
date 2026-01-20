@@ -1,0 +1,17 @@
+name: Aprendiendo GitHub Actions # Nombre del workflow que aparecera en la pestaña de Actions en GitHub (opcional pero recomendable para diferenciarlo de los workflows)
+run-name: ¡Estoy aprendiendo GutHub Actions! #Nombre del run especifico del workflow que aparecerá en la pestaña de Actions en GitHub (opcional pero recomendable para diferenciarlo de los workflows)
+on: [push] #Especifica el trigger o triggers (event) que pueden hacer iniciar este workflow
+jobs: #Agrupan todos los jobs que correran en este workflows
+ hola-mundo: #Nombre que identifica al job y srive para agrupar sus propiedades y steps (No pueden tener espacio)
+   runs-on: ubuntu-latest #Especcifica el tipo de runner (servidor) cada job puede tener su propio runner
+   steps: #Sirve para agrupar la serie de pasos que tendra nuestro jobs (Los steps debe tener un identacion)
+     - name: #Nombre que identifica el step (opcional, pero nos ayuda a encontrarlo mas facil)
+       uses: actions/checkout@v3 #Indica qué action usará.
+     - name: #Definir variable
+       run: echo "USERNAME=${{github.actor}}" >> $GITHUB_ENV #Indica que comando ejecutar en el runner
+     - name: Correr script
+       run: python hola_mundo.py
+       
+   
+ 
+  
