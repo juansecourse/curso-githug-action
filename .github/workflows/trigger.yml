@@ -1,0 +1,51 @@
+name: Practicando Triggers
+run-name: ¡Aprendiendo triggers!
+on: 
+    push:
+      branches:
+        - 'main'
+      paths:
+        - '**.ts'
+    pull_request:
+      types:
+        - opened # se ejcuta por primera vez
+        - labeled # se ejecuta cuando alguien le agrega una etiqueta el pull_request
+      branches: # sobre que rama quiero que se active
+        - 'main'
+      paths: # sobre que archivo quiero que se active
+        - '**.ts'
+    issues:
+       types: 
+        - opened
+        - edited
+        - closed
+        # se ejecuta los job cuando abra un issues nuevo, cuando edite uno existe, cuando cierre uno
+    issue_comment: #Se utiliza para hacer un comentario a un issue nuevo y tambien sirve para los pull_request
+     types:
+       - created
+       - edited
+       - deleted
+    workflow_dispatch: #forma de la que podemos lanzar , workflows de manera manual
+      inputs:
+        alerta:
+          description: 'nivel'
+          required: true
+          default: medio
+          type: choice
+          options:
+            - bajo
+            - medio
+jobs:
+  trigger-practice: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node .js
+        uses: actions/setups-node@v4
+      - name: install ts-node
+        run: npm install
+          
+      
+      
+   
