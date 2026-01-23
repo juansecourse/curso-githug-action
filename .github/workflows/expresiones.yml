@@ -1,0 +1,25 @@
+name: Expresiones
+run-name: ¡Trabajando con expresiones!
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+     types:
+       - opened
+       - synchronize
+       - reopened
+  workflow_dispatch: 
+      inputs:
+          edad_persona:
+            description: 'Edad de la persona'
+            default: 18
+            required: true
+            type: number
+          nombre_persona:
+             description: 'Nombre persona'
+             default: 'Juan'
+             required: true
+             type: string
+        
+          
