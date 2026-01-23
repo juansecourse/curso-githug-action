@@ -22,8 +22,8 @@ on:
              required: true
              type: string
 jobs:
-  ejecutar_proceso:
-    if: ${{inputs.edad_persona == 18}}
+  mayor:
+    if: ${{inputs.edad_persona >= 18}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,7 +31,15 @@ jobs:
       - name: definir nombre
         run: echo "USERNAME=${{ inputs.nombre_persona }}" >> $GITHUB_ENV
       - name: definir edad
-        run:  echo "Edad=${{ inputs.edad_persona}}" >> $GITHUB_ENV
+        run:  echo "Edad=${{ inputs.edad_persona}}" es mayor de edad
       - name: Correr Script
         run: python expresiones.py
+  menor:
+    if: ${{inputs.edad_persona <= 18}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: correr script
+        run: echo ${{inputs.nombre_persona}} es menor de edad
           
